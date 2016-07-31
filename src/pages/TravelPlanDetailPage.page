@@ -1,0 +1,31 @@
+<apex:page standardController="Itenary__c" sidebar="false" extensions="IntnaryExtension" >
+    <apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Edit" action="{!Edit}"/>
+            <apex:commandButton value="Delete" action="{!Delete}"/>
+        </apex:pageBlockButtons>
+       <apex:pageBlockSection title="Primary Details" collapsible="false" columns="2">
+           <apex:inputField value="{!Itenary__c.Name}"/>
+           <apex:inputField value="{!Itenary__c.Is_Confirmation_Required__c}"/>
+           <apex:inputField value="{!Itenary__c.Customer_Phone_No__c}"/>
+       </apex:pageBlockSection>
+       <apex:pageBlockSection title="Secondary Details" collapsible="false" columns="2">
+           <apex:inputField value="{!Itenary__c.Invoice_No__c}"/>
+           <apex:inputField value="{!Itenary__c.Invoice_Secret__c}"/>
+           <apex:inputField value="{!Itenary__c.Large_Invoice__c}"/>
+           <apex:inputField value="{!Itenary__c.Priority__c}"/>
+       </apex:pageBlockSection>
+        <apex:outputPanel id="budgetsection">
+            <apex:inputCheckbox value="{!HideBudgetDetails}">
+                <apex:actionSupport event="onchange" reRender="budgetsection" />
+            </apex:inputCheckbox>
+            <apex:pageBlockSection title="BudgetDetails" id="budgetsection2" collapsible="false" rendered="{!HideBudgetDetails}">
+                <apex:inputField value="{!Itenary__c.Sum_Budget__c}"/>
+                <apex:inputField value="{!Itenary__c.Sum_Budget__c}"/>
+                <apex:inputField value="{!Itenary__c.Total_Budget__c}"/>
+            </apex:pageBlockSection>
+        </apex:outputPanel>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

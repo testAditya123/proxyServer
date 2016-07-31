@@ -1,0 +1,33 @@
+<apex:page standardController="Itenary__c" extensions="testItenary" >
+    <apex:form >
+        <apex:pageBlock >
+             <apex:pageBlockButtons >
+            	<apex:commandButton value="Save" action="{!Save}" />
+                <apex:commandButton value="Cancel" action="{!Cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Travel Plan Detail" collapsible="false" columns="2" >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Name" />
+                    <apex:inputField value="{!Itenary__c.Name}" styleClass="background"/> 
+                </apex:pageBlockSectionItem>
+                <apex:outputfield value="{!Itenary__c.RecordTypeid}"/>
+                <apex:outputField value="{!Itenary__c.Invoice_Email__c}" />
+                <apex:inputField value="{!Itenary__c.Customer_Phone_No__c }" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Travel Plan Detail" collapsible="false" columns="2">
+                <apex:inputField value="{!Itenary__c.Invoice_No__c }" />
+                <apex:inputField value="{!Itenary__c.Invoice_Secret__c }"/>
+                <apex:inputField value="{!Itenary__c.Large_Invoice__c  }"/>
+            </apex:pageBlockSection>
+            <apex:outputPanel id="AddressSection" >
+                <apex:inputCheckbox value="{!test2}">
+                    <apex:actionSupport event="onchange" reRender="AddressSection" />
+                </apex:inputCheckbox>
+                <apex:pageBlockSection title="Address" id="debugBlock" collapsible="false" rendered="{!IF(test2 == true,true,false)}" >
+                    <apex:inputField value="{!Itenary__c.Sum_Budget__c   }" />
+                    <apex:inputField value="{!Itenary__c.Sum_Budget__c  }" />
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
